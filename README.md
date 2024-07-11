@@ -1,3 +1,5 @@
+Pretendo neste projeto fazer comparação entre modelos criados via 'QuickBuild' e StandardBuild' utilizando o mesmo Dataset e as mesmas configurações, para modelos de previsão de um dia.
+
 🚀 Passo a Passo
 1. Selecionar Dataset
 O Dataset selecionado foi o 'dataset-1000-com-preco-promocional-e-renovacao-estoque'
@@ -11,13 +13,14 @@ A coluna que identifica o produto é a ID_produto e a coluna que refere-se ao te
 
 Configurei para prever um dia.
 
-Selecionei 'Quick build'
+Selecionei 'QuickBuild'
 
 ![EstoqueInteligente1Model](https://github.com/caio-videmelo/lab-aws-sagemaker-canvas-estoque/assets/174061850/36c78624-2026-4bd7-9a79-50d2a413e14b)
 
 3. Analisar
 
 Avaliando as Métricas de Performance do Modelo.
+
 AVG.wQL (Average Weighted Quantile Loss): 0.393
 
 A métrica AVG.wQL de 0,393 representa a perda média ponderada por quantil. Quanto menor esse valor, melhor o desempenho do modelo em prever os diferentes percentis (P10, P50, P90). Um valor de 0,393 sugere que o modelo ainda pode ser aprimorado para melhorar a precisão das previsões por quantil.
@@ -77,3 +80,33 @@ Sendo assim, resolvi criar uma Versão 2 do mesmo modelo; porém, desta vez, rea
 
 ![EstoqueInteligente1ModelV2](https://github.com/caio-videmelo/lab-aws-sagemaker-canvas-estoque/assets/174061850/ffc43212-b989-4f82-91f2-3c18c50e2870)
 
+O 'StandardBuild' retornou os seguintes valores:
+
+![EstoqueInteligente1ModelV2Standard](https://github.com/caio-videmelo/lab-aws-sagemaker-canvas-estoque/assets/174061850/078df311-627a-4c1e-aade-e7bfaa1544b8)
+
+
+Avaliando as Métricas de Performance do Modelo.
+
+AVG.wQL (Average Weighted Quantile Loss): 0.150
+
+Um valor de 0,150 sugere que através de 'StandardBuild' houve melhora da precisão das previsões por quantil, considerando que via 'QuickBuild' o resultado desta métrica foi de 0,393. O valor de 0.150 para Avg. wQL indica que o modelo está razoavelmente bem calibrado para os quantis ponderados, mas pode haver espaço para melhorias.
+
+MAPE (Mean Absolute Percentage Error): 0.258
+
+Um valor de 0,258 indica que, em média, as previsões do modelo têm um erro percentual absoluto de 25,8% em relação aos valores reais. Isso sugere que o modelo tem um desempenho moderado, podendo ser aceitável em alguns contextos, mas também indicando que há espaço para melhorias. Há de se considerar que houve significativa melhora ao utilizar o 'StandardBuild', visto que via 'QuickBuild' o valor obtido foi de 0,464, ou seja, obteve 46,4% de erro percentual absoluto.
+
+WAPE (Weighted Absolute Percentage Error): 0.204
+
+O WAPE de 0,204 significa que o erro absoluto ponderado pelas magnitudes dos valores reais é de 20,4%. Esse valor sugere que o modelo está prevendo com um nível de precisão moderadamente bom, mas ainda pode haver espaço para melhorias. É importante ressaltar que via 'QuickBuild' o valor dessa métrica foi 0,584, ou seja, de 58,4% de erro absoluto ponderado, portanto, via 'StandarBuild' o modelo possui nível de precisão melhor.
+
+RMSE (Root Mean Squared Error): 20.435
+
+As previsões do modelo têm um erro quadrático médio de 20,435 unidades. Novamente, como esperado, o 'StandardBuild' apresentou valores relativamente mais precisos em comparação aos valores obtidos via 'QuickBuild'.
+
+MASE (Mean Absolute Scaled Error): 0.000
+
+O MASE de 0,000 indica que os valores previstos são exatamente iguais aos valores reais. Via 'QuickBuild', o valor obtido foi de 0,576; logo, houve melhora significativa. No entanto, é importante garantir que este resultado não seja devido a overfitting, onde o modelo pode estar ajustado muito de perto aos dados de treinamento e pode não generalizar bem para novos dados.
+
+Infelizmente, ao tentar executar a 'single prediction' para o produto 23, sendo apresentada a seguinte mensagem: "Falha ao criar o endpoint de previsão devido a limites insuficientes de recursos. O limite de serviço ao nível da conta 'ml.c5.2xlarge para uso de endpoint' é de 1 instância, com utilização atual de 1 instância e um delta de solicitação de 1 instância. Por favor, use o AWS Service Quotas para solicitar um aumento dessa cota. Se o AWS Service Quotas não estiver disponível, entre em contato com o suporte da AWS para solicitar um aumento dessa cota."
+
+![Error](https://github.com/caio-videmelo/lab-aws-sagemaker-canvas-estoque/assets/174061850/928b41ea-822c-42cb-a35d-f7fa5d621580)
