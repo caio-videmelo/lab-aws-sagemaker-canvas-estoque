@@ -71,3 +71,9 @@ Portanto, a variação do preço do produto é um fator determinante para a dist
 Períodos de preços mais baixos tendem a resultar em previsões com valores mais próximos de P10, enquanto preços mais altos estão associados a previsões próximas de P90.
 
 Compreender essa relação entre preço e os percentis de previsão de estoque é essencial para tomar decisões de gestão de estoque e planejamento da produção de forma mais assertiva.
+
+
+Sendo assim, resolvi criar uma Versão 2 do mesmo modelo; porém, desta vez, realizei um 'standard build' a fins de comparação.
+
+![EstoqueInteligente1ModelV2](https://github.com/caio-videmelo/lab-aws-sagemaker-canvas-estoque/assets/174061850/ffc43212-b989-4f82-91f2-3c18c50e2870)
+
