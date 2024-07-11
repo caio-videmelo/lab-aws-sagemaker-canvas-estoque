@@ -45,11 +45,13 @@ O MAPE, WAPE e RMSE apontam para erros significativos nas previsões, enquanto o
 Portanto, serão necessários ajustes e refinamentos adicionais no modelo para melhorar sua precisão e confiabilidade.
 
 4. Prever
-Selecionei 'single prediction' e fiz as previsões individuais para cada produto. Fiz previsões para o produto 23 para o proximo dia com três cenarios distintos (P10 , P50 e P90):
+
+Selecionei 'single prediction' e fiz as previsões individuais para o produto 23 para o proximo dia com três cenarios distintos (P10 , P50 e P90):
 
 ![single_prediction_results](https://github.com/caio-videmelo/lab-aws-sagemaker-canvas-estoque/assets/174061850/fa81f5b0-6fa0-48b4-bcdb-36aa0fbd980b)
 
 Explicando a Relação entre Preço e Percentis de Previsão de Estoque
+
 Os percentis P10, P50 e P90 são medidas estatísticas importantes para entender a distribuição das previsões de estoque geradas pelo seu modelo de séries temporais.
 
 Relação com o Preço
